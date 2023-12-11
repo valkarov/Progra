@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9f7fc3dea0ec495683bb08b931888488" Name="Diagram1">
-        <EntityTypeShape EntityType="ProyectoPrograModel.Clientes" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Empleados" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Eventos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="b5ecebe6cf234bba932a7113fc4b94e6" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoPrograModel.Cliente" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Empleado" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Evento" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoPrograModel.Inventario" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.ProductosServicios" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.ProductosServicio" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoPrograModel.RegistroActividad" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Usuarios" Width="1.5" PointX="2.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Usuario" Width="1.5" PointX="2.75" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="ProyectoPrograModel.FK__Eventos__Cliente__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoPrograModel.FK__Eventos__Emplead__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoPrograModel.FK__RegistroA__Usuar__44FF419A" ManuallyRouted="false" />
