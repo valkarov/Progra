@@ -2,7 +2,7 @@
 
 namespace PrograAvanzadaProyectoAPI.Models
 {
-    public class SuministroModel
+    public class ProductoModel
     {
         [Key]
         public int ID { get; set; }
