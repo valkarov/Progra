@@ -17,7 +17,7 @@ public class EmpleadoController : ApiController
         return db.Empleados;
     }
 
-    // GET: api/Empleados/5
+    // GET: api/Empleado/5
     [ResponseType(typeof(Empleado))]
     public IHttpActionResult GetEmpleado(int id)
     {
@@ -30,7 +30,7 @@ public class EmpleadoController : ApiController
         return Ok(empleado);
     }
 
-    // PUT: api/Empleados/5
+    // PUT: api/Empleado/5
     [ResponseType(typeof(void))]
     public IHttpActionResult PutEmpleado(int id, Empleado empleado)
     {
@@ -80,7 +80,7 @@ public class EmpleadoController : ApiController
         return CreatedAtRoute("DefaultApi", new { id = empleado.ID }, empleado);
     }
 
-    // DELETE: api/Empleados/5
+    // DELETE: api/Empleado/5
     [ResponseType(typeof(Empleado))]
     public IHttpActionResult DeleteEmpleado(int id)
     {
