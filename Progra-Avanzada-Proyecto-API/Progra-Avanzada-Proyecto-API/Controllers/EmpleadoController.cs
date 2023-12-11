@@ -12,16 +12,16 @@ public class EmpleadoController : ApiController
     private MiCateringContext db = new MiCateringContext();
 
     // GET: api/Empleados
-    public IQueryable<Empleado> GetEmpleados()
+    public IQueryable<EmpleadoModel> GetEmpleados()
     {
-        return db.Empleados;
+        return db.Empleado;
     }
 
     // GET: api/Empleado/5
-    [ResponseType(typeof(Empleado))]
+    [ResponseType(typeof(EmpleadoModel))]
     public IHttpActionResult GetEmpleado(int id)
     {
-        Empleado empleado = db.Empleados.Find(id);
+        EmpleadoModel empleado = db.Empleado.Find(id);
         if (empleado == null)
         {
             return NotFound();
@@ -32,7 +32,7 @@ public class EmpleadoController : ApiController
 
     // PUT: api/Empleado/5
     [ResponseType(typeof(void))]
-    public IHttpActionResult PutEmpleado(int id, Empleado empleado)
+    public IHttpActionResult PutEmpleado(int id, EmpleadoModel empleado)
     {
         if (!ModelState.IsValid)
         {
@@ -66,31 +66,31 @@ public class EmpleadoController : ApiController
     }
 
     // POST: api/Empleados
-    [ResponseType(typeof(Empleado))]
-    public IHttpActionResult PostEmpleado(Empleado empleado)
+    [ResponseType(typeof(EmpleadoModel))]
+    public IHttpActionResult PostEmpleado(EmpleadoModel empleado)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
-        db.Empleados.Add(empleado);
+        db.Empleado.Add(empleado);
         db.SaveChanges();
 
         return CreatedAtRoute("DefaultApi", new { id = empleado.ID }, empleado);
     }
 
     // DELETE: api/Empleado/5
-    [ResponseType(typeof(Empleado))]
+    [ResponseType(typeof(EmpleadoModel))]
     public IHttpActionResult DeleteEmpleado(int id)
     {
-        Empleado empleado = db.Empleados.Find(id);
+        EmpleadoModel empleado = db.Empleado.Find(id);
         if (empleado == null)
         {
             return NotFound();
         }
 
-        db.Empleados.Remove(empleado);
+        db.Empleado.Remove(empleado);
         db.SaveChanges();
 
         return Ok(empleado);
@@ -107,6 +107,6 @@ public class EmpleadoController : ApiController
 
     private bool EmpleadoExists(int id)
     {
-        return db.Empleados.Count(e => e.ID == id) > 0;
+        return db.Empleado.Count(e => e.ID == id) > 0;
     }
 }

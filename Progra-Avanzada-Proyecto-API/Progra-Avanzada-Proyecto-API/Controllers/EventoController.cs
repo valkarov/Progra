@@ -11,16 +11,16 @@ public class EventoController : ApiController
     private MiCateringContext db = new MiCateringContext();
 
     // GET: api/Eventos
-    public IQueryable<Evento> GetEventos()
+    public IQueryable<EventoModel> GetEventos()
     {
         return db.Eventos;
     }
 
     // GET: api/Eventos/5
-    [ResponseType(typeof(Evento))]
+    [ResponseType(typeof(EventoModel))]
     public IHttpActionResult GetEvento(int id)
     {
-        Evento evento = db.Eventos.Find(id);
+        EventoModel evento = db.Eventos.Find(id);
         if (evento == null)
         {
             return NotFound();
@@ -30,8 +30,8 @@ public class EventoController : ApiController
     }
 
     // POST: api/Eventos
-    [ResponseType(typeof(Evento))]
-    public IHttpActionResult PostEvento(Evento evento)
+    [ResponseType(typeof(EventoModel))]
+    public IHttpActionResult PostEvento(EventoModel evento)
     {
         if (!ModelState.IsValid)
         {
@@ -46,7 +46,7 @@ public class EventoController : ApiController
 
     // PUT: api/Eventos/5
     [ResponseType(typeof(void))]
-    public IHttpActionResult PutEvento(int id, Evento evento)
+    public IHttpActionResult PutEvento(int id, EventoModel evento)
     {
         if (!ModelState.IsValid)
         {
@@ -65,10 +65,10 @@ public class EventoController : ApiController
     }
 
     // DELETE: api/Eventos/5
-    [ResponseType(typeof(Evento))]
+    [ResponseType(typeof(EventoModel))]
     public IHttpActionResult DeleteEvento(int id)
     {
-        Evento evento = db.Eventos.Find(id);
+        EventoModel evento = db.Eventos.Find(id);
         if (evento == null)
         {
             return NotFound();
