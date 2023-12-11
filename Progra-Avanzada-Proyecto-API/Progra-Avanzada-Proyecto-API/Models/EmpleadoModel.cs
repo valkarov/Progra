@@ -2,7 +2,7 @@
 
 namespace PrograAvanzadaProyectoAPI.Models
 {
-    public class Empleado
+    public class EmpleadoModel
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
