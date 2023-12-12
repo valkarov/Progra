@@ -4,15 +4,13 @@ namespace Progra_Avanzada_Proyecto.Models
 {
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Username")]
+        [Required(ErrorMessage = "El campo Usuario es obligatorio.")]
+        [Display(Name = "Usuario")]
         public string NombreUsuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Contrasenna { get; set; }
-
-        // Puedes agregar más propiedades si es necesario, como RememberMe, etc.
     }
 }
