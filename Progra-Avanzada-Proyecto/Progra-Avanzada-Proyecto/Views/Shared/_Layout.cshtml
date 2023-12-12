@@ -3,35 +3,91 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - R&R Catering Service</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="image/png" href="~/images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>RyR Gastronomía sin Límites</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="~/css/plugins.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <header id="header" data-transparent="false" data-fullwidth="true" class="dark submenu-light">
+        <div class="header-inner">
+            <div class="container">
+                <!--Logo-->
+                <div id="logo">
+                    <a href="index.html">
+                        <span class="logo-dark">R&R Catering Service</span>
+                    </a>
+                </div>
+                <!--End: Logo-->
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger">
+                    <a class="lines-button x"><span class="lines"></span></a>
+                </div>
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <div id="mainMenu">
+                    <div class="container">
+                        <nav>
+                                <ul>
+                                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Empleados", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Eventos", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("clientes", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Inventario", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Productos", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                         </nav>
+                    </div>
+                </div>
+            </div>
+                <!--end: Navigation-->
+        </div>
+    </header>
+    @RenderBody()
+
+    <footer id="footer">
+    <div class="footer-content">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <div class="widget-title">Contáctanos</div>
+                        <p>Puedes encontrarnos en:</p>
+                        <p>Tacares, Grecia, Alajuela, Costa Rica<br>Teléfono:+506 8507 3503<br>Email: r.rcatering@ryrcateringservice.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <div class="widget-title">Redes Sociales</div>
+                        <ul class="list">
+                            <li><a href="https://www.instagram.com/ryrgastronomia_/?hl=es">Instagram</a></li>
+                            <li><a href="https://es-la.facebook.com/RYRCateringService/">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <div class="copyright-content">
+        <div class="container">
+            <div class="copyright-text text-center">&copy; 2023 por RyR Gastronomía sin Límites. - Todos los derechos reservados.</div>
+        </div>
+    </div>
+    </footer>
 
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/functions.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

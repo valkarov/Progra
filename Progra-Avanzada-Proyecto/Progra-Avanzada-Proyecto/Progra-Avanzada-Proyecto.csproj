@@ -432,7 +432,9 @@
     <Content Include="images\slider\blurflake2.png" />
     <Content Include="images\slider\blurflake3.png" />
     <Content Include="images\slider\blurflake4.png" />
+    <Content Include="images\slider\comida.png" />
     <Content Include="images\slider\dummy.png" />
+    <Content Include="images\slider\main.png" />
     <Content Include="images\slider\notgeneric_bg3-180x100.jpg" />
     <Content Include="images\slider\notgeneric_bg3.jpg" />
     <Content Include="images\slider\pattern-180x100.png" />

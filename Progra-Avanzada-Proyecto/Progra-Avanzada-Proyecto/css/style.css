@@ -8650,10 +8650,10 @@ div.dataTables_wrapper div.dataTables_length select {
   color: #ffffff;
   box-shadow: 0 6px 38px rgba(0, 0, 0, 0.05);
 }
-.icon-set-container .row > [class^="col-"]:hover .icon-holder {
-  background-color: #fff;
-  color: #2250fc;
-}
+    .icon-set-container .row > [class^="col-"]:hover .icon-holder {
+        background-color: #9b9b9b;
+        color: #2250fc;
+    }
 
 .kenburns-bg {
   background-position: 50% 20%;
