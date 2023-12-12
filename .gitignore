@@ -365,3 +365,6 @@ Progra-Avanzada-Proyecto-API/Progra-Avanzada-Proyecto-API/Web.config
 Progra-Avanzada-Proyecto-API/Progra-Avanzada-Proyecto-API/Web.config
 Progra-Avanzada-Proyecto-API/Progra-Avanzada-Proyecto-API/Controllers/EventoController.cs
 Progra-Avanzada-Proyecto-API/Progra-Avanzada-Proyecto-API/Web.config
+Progra-Avanzada-Proyecto/Progra-Avanzada-Proyecto/Controllers/LoginController.cs
+Progra-Avanzada-Proyecto/Progra-Avanzada-Proyecto/js/login.js
+Progra-Avanzada-Proyecto/Progra-Avanzada-Proyecto/Views/Login/Login.cshtml
