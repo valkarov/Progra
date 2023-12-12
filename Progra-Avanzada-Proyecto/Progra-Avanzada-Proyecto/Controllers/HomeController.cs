@@ -13,17 +13,28 @@ namespace Progra_Avanzada_Proyecto.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Empleados()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Eventos()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Clientes()
+        {
+            return View();
+        }
+
+        public ActionResult Inventario()
+        {
+            return View();
+        }
+
+        public ActionResult Productos()
+        {
             return View();
         }
     }
