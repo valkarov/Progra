@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Progra_Avanzada_Proyecto_API;
+using BCrypt.Net; // Asegúrate de tener esta referencia para BCrypt
 
 namespace Progra_Avanzada_Proyecto_API.Controllers
 {
@@ -30,9 +22,14 @@ namespace Progra_Avanzada_Proyecto_API.Controllers
 
             if (usuario != null && BCrypt.Net.BCrypt.Verify(usuarioLogin.Contrasenna, usuario.Contrasenna))
             {
-                // Aquí manejarías un inicio de sesión exitoso
-                // Idealmente, deberías devolver un token de autenticación
-                return Ok("Autenticación exitosa"); // Reemplazar con la lógica adecuada
+                // Crear un objeto con la información necesaria
+                var userInfo = new
+                {
+                    NombreUsuario = usuario.NombreUsuario,
+                    Rol = usuario.Rol // Asegúrate de que el modelo Usuario tenga una propiedad Rol
+                };
+
+                return Ok(userInfo); // Devuelve el objeto con el nombre de usuario y el rol
             }
             else
             {

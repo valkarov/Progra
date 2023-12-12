@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Progra_Avanzada_Proyecto.Models; // Asegúrate de usar el espacio de nombres correcto para tu modelo LoginViewModel
+using Progra_Avanzada_Proyecto.Models;
+using System.Web.Mvc;
 
 namespace Progra_Avanzada_Proyecto.Controllers
 {
     public class LoginController : Controller
     {
-        // Asegúrate de tener HttpClient configurado para ser reutilizado o instanciado aquí si es necesario
         private static readonly HttpClient client = new HttpClient();
 
         [HttpGet]
@@ -26,24 +22,28 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Define la base de la URL de la API si aún no lo has hecho en otro lugar
-                client.BaseAddress = new Uri("http://tuapi.com/");
+                // Configurar la base de la URL de la API.
+                client.BaseAddress = new Uri("https://localhost:44356/"); // Asegúrate de que esta es la URL correcta de tu API.
 
                 try
                 {
                     // Realiza la llamada a la API
-                    var response = await client.PostAsJsonAsync("api/login/authenticate", model);
+                    var json = JsonConvert.SerializeObject(model);
+                    var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync("api/login/authenticate", content);
 
                     if (response.IsSuccessStatusCode)
                     {
                         var responseContent = await response.Content.ReadAsStringAsync();
                         var loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseContent);
 
+                        // Asumiendo que la API responde con el nombre de usuario y el rol
+                        // y deseas almacenar esta información en la sesión.
                         Session["Usuario"] = loginResponse.NombreUsuario;
                         Session["Rol"] = loginResponse.Rol;
 
-                        // Redirige al usuario basado en el rol
-                        return RedirectToRoleBasedPage(loginResponse.Rol);
+                        // Redirige a todos los usuarios a la página de inicio después del inicio de sesión exitoso.
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -52,25 +52,13 @@ namespace Progra_Avanzada_Proyecto.Controllers
                 }
                 catch (HttpRequestException e)
                 {
-                    // Maneja excepciones de la solicitud HTTP aquí
-                    ModelState.AddModelError("", "Error de comunicación con el servicio de autenticación.");
+                    // Registra la excepción en tu sistema de logging.
+                    ModelState.AddModelError("", "Error de comunicación con el servicio de autenticación: " + e.Message);
                 }
             }
 
-            // Si el modelo no es válido o la autenticación falla, vuelve a mostrar la vista de inicio de sesión con errores de validación
+            // Si el modelo no es válido o la autenticación falla, vuelve a mostrar la vista de inicio de sesión con errores de validación.
             return View(model);
-        }
-
-        private ActionResult RedirectToRoleBasedPage(string rol)
-        {
-            if (rol == "Admin")
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
     }
 
@@ -79,6 +67,6 @@ namespace Progra_Avanzada_Proyecto.Controllers
     {
         public string NombreUsuario { get; set; }
         public string Rol { get; set; }
-        // Añade más propiedades según la respuesta de tu API
+        // Puedes agregar más propiedades según lo que tu API responda.
     }
 }
