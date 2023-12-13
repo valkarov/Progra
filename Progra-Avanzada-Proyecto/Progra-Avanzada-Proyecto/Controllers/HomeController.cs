@@ -37,5 +37,15 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             return View();
         }
+
+        public ActionResult Usuarios()
+        {
+            return View();
+        }
+
+        public ActionResult CrearEventos()
+        {
+            return View();
+        }
     }
 }

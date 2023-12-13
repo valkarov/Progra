@@ -23,7 +23,7 @@
             <div class="container">
                 <!--Logo-->
                 <div id="logo">
-                    <a href="index.html">
+                    <a href="@Url.Action("Index", "Home")">
                         <span class="logo-dark">R&R Catering Service</span>
                     </a>
                 </div>
@@ -40,28 +40,29 @@
                         <nav>
                             <ul>
                                 <!-- Enlaces comunes a todos los usuarios -->
-                                <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
 
                                 <!-- Enlaces específicos para el administrador -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "Admin")
                                 {
-                                    <li>@Html.ActionLink("Empleados", "Empleados", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Eventos", "Eventos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Clientes", "Clientes", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Inventario", "Inventario", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Productos", "Productos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li><a href="@Url.Action("Empleados", "Home")">Empleados</a></li>
+                                    <li><a href="@Url.Action("Eventos", "Home")">Eventos</a></li>
+                                    <li><a href="@Url.Action("Clientes", "Home")">Clientes</a></li>
+                                    <li><a href="@Url.Action("Inventario", "Home")">Inventario</a></li>
+                                    <li><a href="@Url.Action("Productos", "Home")">Productos</a></li>
+                                    <li><a href="@Url.Action("Usuarios", "Home")">Usuarios</a></li>
+                                    <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
                                 }
 
                                 <!-- Enlaces para usuarios autenticados -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "User")
                                 {
-                                    <li>@Html.ActionLink("Solicitar evento", "Productos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li><a href="@Url.Action("CrearEventos", "Home")">Solicitar evento</a></li>
+                                    <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
                                 }
                                 @if (Session["Rol"] == null)
                                 {
-                                    <li>@Html.ActionLink("Iniciar sesión", "Index", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li><a href="@Url.Action("Index", "Account")">Iniciar sesión</a></li>
                                 }
                             </ul>
                         </nav>
