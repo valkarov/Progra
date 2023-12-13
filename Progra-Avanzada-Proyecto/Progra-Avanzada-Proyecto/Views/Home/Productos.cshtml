@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Clientes";
+    ViewBag.Title = "Productos";
 }
 <main aria-labelledby="title">
     <!-- Body Inner -->
@@ -10,10 +10,10 @@
                 <!-- DataTable -->
                 <div class="row mb-3">
                     <div class="col-lg-6">
-                        <h4>Administración de clientes</h4>
-                        <a href="@Url.Action("CrearClientes", "Home")" class="btn-link">
+                        <h4>Administración de productos</h4>
+                        <a href="@Url.Action("CrearProductos", "Home")" class="btn-link">
                             <button type="button" class="btn btn-light">
-                                <i class="icon-plus"></i> Añadir cliente
+                                <i class="icon-plus"></i> Añadir producto
                             </button>
                         </a>
                     </div>
@@ -31,23 +31,19 @@
                         <table id="datatable" class="table table-bordered table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Dirección</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>
-                                    <th>PreferenciasDieteticas</th>
-                                    <th>HistorialEventos</th>
+                                    <th>Descripcion</th>
+                                    <th>Tipo</th>
+                                    <th>Precio</th>
+                                    <th>Disponibilidad</th>
                                     <th class="noExport">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Karen Perez</td>
-                                    <td>Limón</td>
-                                    <td>8888-8888</td>
-                                    <td>Karen.Perez@example.com</td>
-                                    <td>Alergia al chocolate</td>
-                                    <td>Null</td>
+                                    <td>Mesa redonda para 8 personas</td>
+                                    <td>Mesas</td>
+                                    <td>2000</td>
+                                    <td>Si</td>
                                     <td>
                                         <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
                                         <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>

@@ -43,5 +43,27 @@ namespace Progra_Avanzada_Proyecto.Controllers
             return View();
         }
 
+<<<<<<< Updated upstream
+=======
+        public ActionResult AgregarInventario()
+        {
+            return View();
+        }
+
+        public ActionResult CrearClientes()
+        {
+            return View();
+        }
+
+        public ActionResult CrearEmpleados()
+        {
+            return View();
+        }
+
+        public ActionResult CrearProductos()
+        {
+            return View();
+        }
+>>>>>>> Stashed changes
     }
 }
