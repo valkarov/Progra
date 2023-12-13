@@ -1,0 +1,70 @@
+﻿@model Progra_Avanzada_Proyecto.Models.EventosViewModel
+
+@{
+    ViewBag.Title = "Crear Evento";
+}
+<main aria-labelledby="title">
+    <!-- Body Inner -->
+    <div class="body-inner">
+
+        <!-- Section -->
+        <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
+            <div class="container container-fullscreen">
+                <div class="text-middle">
+                    <div class="row">
+                        <div class="col-lg-7 center p-30 background-white b-r-6">
+                            <div class="col-lg-12 m-t-20 text-center">
+                                <h3>Registrar nuevo Evento</h3>
+                                <p>Ingresa la información del nuevo evento a continuación.</p>
+                            </div>
+
+                            @using (Html.BeginForm("Create", "Eventos", FormMethod.Post, new { id = "createEventosForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Fecha)
+                                    @Html.EditorFor(model => model.Fecha, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", placeholder = "Fecha" } })
+                                    @Html.ValidationMessageFor(model => model.Fecha)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Ubicacion)
+                                    @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ubicacion" } })
+                                    @Html.ValidationMessageFor(model => model.Ubicacion)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Tipo)
+                                    @Html.EditorFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control", placeholder = "Tipo" } })
+                                    @Html.ValidationMessageFor(model => model.Tipo)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Cedula)
+                                    @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control", placeholder = "Cédula" } })
+                                    @Html.ValidationMessageFor(model => model.Cedula)
+                                </div>
+
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                    <a href="@Url.Action("Index", "Empleados")" class="btn btn-default">Cancelar</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: Section -->
+    </div>
+    <!-- end: Body Inner -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+</main>

@@ -1,0 +1,79 @@
+﻿@model Progra_Avanzada_Proyecto.Models.EventosViewModel
+
+@{
+    ViewBag.Title = "Editar Eventos";
+}
+
+<main aria-labelledby="title">
+    <div class="body-inner">
+        <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
+            <div class="container container-fullscreen">
+                <div class="text-middle">
+                    <div class="row">
+                        <div class="col-lg-7 center p-30 background-white b-r-6">
+                            <div class="col-lg-12 m-t-20 text-center">
+                                <h3>Editar Empleado</h3>
+                                <p>Modifica la información del empleado a continuación.</p>
+                            </div>
+
+                            @using (Html.BeginForm("Edit", "Eventos", FormMethod.Post, new { id = "editEventosForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(model => model.ID)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Nombre)
+                                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre" })
+                                    @Html.ValidationMessageFor(model => model.Nombre)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Direccion)
+                                    @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", placeholder = "Dirección" })
+                                    @Html.ValidationMessageFor(model => model.Direccion)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Telefono)
+                                    @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
+                                    @Html.ValidationMessageFor(model => model.Telefono)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Cedula)
+                                    @Html.TextBoxFor(model => model.Cedula, new { @class = "form-control", placeholder = "Cédula" })
+                                    @Html.ValidationMessageFor(model => model.Cedula)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FechaContratacion)
+                                    @Html.TextBoxFor(model => model.FechaContratacion, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Contratación", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.FechaContratacion)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FechaSalida)
+                                    @Html.TextBoxFor(model => model.FechaSalida, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Salida", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.FechaSalida)
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    <a href="@Url.Action("Index", "Empleados")" class="btn btn-link">Cancelar</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+</main>
