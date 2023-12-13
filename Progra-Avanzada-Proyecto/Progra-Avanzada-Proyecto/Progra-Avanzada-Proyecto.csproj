@@ -4696,22 +4696,15 @@
     <Content Include="webfonts\fa-solid-900.woff2" />
     <Content Include="webfonts\inspiro-icons.ttf" />
     <Content Include="webfonts\inspiro-icons.woff" />
-<<<<<<< Updated upstream
-    <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Clientes.cshtml" />
     <Content Include="Views\Home\Inventario.cshtml" />
     <Content Include="Views\Home\Productos.cshtml" />
-=======
-    <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Login\" />
-    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

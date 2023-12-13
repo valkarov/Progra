@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using Progra_Avanzada_Proyecto.Models;
 using System.Web.Mvc;
 using System.Web.Helpers;
+using System.Web.Security;
+using System.Web;
 
 namespace Progra_Avanzada_Proyecto.Controllers
 {
@@ -38,13 +40,17 @@ namespace Progra_Avanzada_Proyecto.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Procesa la respuesta de la API
                         var responseContent = await response.Content.ReadAsStringAsync();
                         var loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseContent);
 
-                        // Almacena la información del usuario en la sesión y redirige.
-                        Session["Usuario"] = loginResponse.NombreUsuario;
-                        Session["Rol"] = loginResponse.Rol;
+                        if (loginResponse != null)
+                        {
+                            // Almacena el nombre de usuario y el rol en la sesión
+                            Session["NombreUsuario"] = loginResponse.NombreUsuario;
+                            Session["Rol"] = loginResponse.Rol;
+                            return RedirectToAction("Index", "Home");
+                        }
+
 
                         return RedirectToAction("Index", "Home");
                     }
@@ -100,6 +106,12 @@ namespace Progra_Avanzada_Proyecto.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear(); // Limpia la sesión
+            return RedirectToAction("Index", "Home"); // Redirecciona a la página de inicio
         }
 
 

@@ -34,35 +34,41 @@
                 </div>
                 <!--end: Navigation Resposnive Trigger-->
                 <!--Navigation-->
+
                 <div id="mainMenu">
                     <div class="container">
                         <nav>
-<<<<<<< Updated upstream
-                                <ul>
-                                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <ul>
+                                <!-- Enlaces comunes a todos los usuarios -->
+                                <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+                                <!-- Enlaces específicos para el administrador -->
+                                @if (Session["Rol"] != null && Session["Rol"].ToString() == "Admin")
+                                {
                                     <li>@Html.ActionLink("Empleados", "Empleados", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("Eventos", "Eventos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("Clientes", "Clientes", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("Inventario", "Inventario", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("Productos", "Productos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                </ul>
-=======
-                            <ul>
-                                <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Empleados", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Eventos", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("clientes", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Inventario", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Productos", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Admin", "Index", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                }
+
+                                <!-- Enlaces para usuarios autenticados -->
+                                @if (Session["Rol"] != null && Session["Rol"].ToString() == "User")
+                                {
+                                    <li>@Html.ActionLink("Solicitar evento", "Productos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                }
+                                @if (Session["Rol"] == null)
+                                {
+                                    <li>@Html.ActionLink("Iniciar sesión", "Index", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                                }
                             </ul>
->>>>>>> Stashed changes
-                         </nav>
+                        </nav>
                     </div>
                 </div>
-            </div>
                 <!--end: Navigation-->
-        </div>
+            </div>
     </header>
     @RenderBody()
 
