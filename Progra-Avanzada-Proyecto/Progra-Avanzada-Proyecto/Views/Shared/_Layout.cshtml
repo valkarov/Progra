@@ -45,22 +45,13 @@
                                 <!-- Enlaces específicos para el administrador -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "Admin")
                                 {
-<<<<<<< HEAD
-                                    <li>@Html.ActionLink("Empleados", "Empleados", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Eventos", "Eventos", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Clientes", "Clientes", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Inventario", "Inventario", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Productos", "Productos", "Index", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
-=======
                                     <li><a href="@Url.Action("Empleados", "Home")">Empleados</a></li>
                                     <li><a href="@Url.Action("Eventos", "Home")">Eventos</a></li>
                                     <li><a href="@Url.Action("Clientes", "Home")">Clientes</a></li>
                                     <li><a href="@Url.Action("Inventario", "Home")">Inventario</a></li>
-                                    <li><a href="@Url.Action("Productos", "Home")">Productos</a></li>
+                                    <li><a href="@Url.Action("Index", "Productos")">Productos</a></li>
                                     <li><a href="@Url.Action("Usuarios", "Home")">Usuarios</a></li>
                                     <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
->>>>>>> 1c89c3fedcd2beb77c82c223e2fdbcc9384e3d0c
                                 }
 
                                 <!-- Enlaces para usuarios autenticados -->

@@ -4703,14 +4703,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Clientes.cshtml" />
     <Content Include="Views\Home\Inventario.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Productos\Edit.cshtml" />
-=======
-    <Content Include="Views\Home\Productos.cshtml" />
-    <Content Include="Views\Home\CrearEventos.cshtml" />
-    <Content Include="Views\Home\Usuarios.cshtml" />
->>>>>>> 1c89c3fedcd2beb77c82c223e2fdbcc9384e3d0c
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
