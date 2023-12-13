@@ -1,7 +1,7 @@
-﻿@model List<Progra_Avanzada_Proyecto.Models.EmpleadosViewModel>
+﻿@model List<Progra_Avanzada_Proyecto.Models.EventosViewModel>
 
 @{
-    ViewBag.Title = "Empleados";
+    ViewBag.Title = "Eventos";
 }
 <main aria-labelledby="title">
     <!-- Body Inner -->
@@ -12,13 +12,14 @@
                 <!-- DataTable -->
                 <div class="row mb-3">
                     <div class="col-lg-6">
-                        <h4>Administración de empleados</h4>
-                        <a href="@Url.Action("Create", "Empleados")" class="btn-link">
+                        <h4>Administración de eventos</h4>
+                        <a href="@Url.Action("Create", "Eventos")" class="btn-link">
                             <button type="button" class="btn btn-light">
-                                <i class="icon-plus"></i> Añadir empleado
+                                <i class="icon-plus"></i> Añadir evento
                             </button>
                         </a>
                     </div>
+
                     <div class="col-lg-6 text-right">
                         <div class="p-dropdown ml-3 float-right">
                             <div class="p-dropdown-content">
@@ -30,38 +31,37 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <table id="datatable" class="table table-bordered table-hover">
+                        <table id="datatable" class="table table-bordered table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Dirección</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>
-                                    <th>Cedula</th>
-                                    <th>Fecha de contratación</th>
-                                    <th>Fecha de salida</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Ubicación</th>
+                                    <th>Tipo</th>
+                                    <th>ClienteID</th>
+                                    <th>EmpleadoID</th>
                                     <th class="noExport">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var empleado in Model)
+                                @foreach (var evento in Model)
                                 {
                                     <tr>
-                                        <td>@empleado.Nombre</td>
-                                        <td>@empleado.Direccion</td>
-                                        <td>@empleado.Telefono</td>
-                                        <td>@empleado.Email</td>
-                                        <td>@empleado.Cedula</td>
-                                        <td>@(empleado.FechaContratacion.HasValue ? empleado.FechaContratacion.Value.ToString("yyyy/MM/dd") : "N/A")</td>
-                                        <td>@(empleado.FechaSalida.HasValue ? empleado.FechaSalida.Value.ToString("yyyy/MM/dd") : "N/A")</td>
+                                        <td>@evento.Fecha.ToString("yyyy/MM/dd")</td>
+                                        <td>@evento.Hora.ToString(@"hh\:mm")</td>
+                                        <td>@evento.Ubicacion</td>
+                                        <td>@evento.Tipo</td>
+                                        <td>@evento.ClienteID</td>
+                                        <td>@evento.EmpleadoID</td>
                                         <td>
-                                            <a class="ml-2" href="@Url.Action("Edit", "Empleados", new { id = empleado.ID })" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
-                                            <a class="ml-2" href="@Url.Action("Delete", "Empleados", new { id = empleado.ID })" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
+                                            <a class="ml-2" href="@Url.Action("Edit", "Eventos", new { id = evento.ID })" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
+                                            <a class="ml-2" href="@Url.Action("Delete", "Eventos", new { id = evento.ID })" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
                                         </td>
                                     </tr>
                                 }
-                            </tbody>
-                        </table>
+
+
+</table>
                     </div>
                 </div>
                 <!-- end: DataTable -->

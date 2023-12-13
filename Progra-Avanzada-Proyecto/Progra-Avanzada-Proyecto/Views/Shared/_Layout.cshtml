@@ -45,19 +45,19 @@
                                 <!-- Enlaces específicos para el administrador -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "Admin")
                                 {
-                                    <li><a href="@Url.Action("Empleados", "Home")">Empleados</a></li>
-                                    <li><a href="@Url.Action("Eventos", "Home")">Eventos</a></li>
-                                    <li><a href="@Url.Action("Clientes", "Home")">Clientes</a></li>
-                                    <li><a href="@Url.Action("Inventario", "Home")">Inventario</a></li>
+                                    <li><a href="@Url.Action("Index", "Empleados")">Empleados</a></li>
+                                    <li><a href="@Url.Action("Index", "Eventos")">Eventos</a></li>
+                                    <li><a href="@Url.Action("Index", "Clientes")">Clientes</a></li>
+                                    <li><a href="@Url.Action("Index", "Inventario")">Inventario</a></li>
                                     <li><a href="@Url.Action("Index", "Productos")">Productos</a></li>
-                                    <li><a href="@Url.Action("Usuarios", "Home")">Usuarios</a></li>
+                                    <li><a href="@Url.Action("Index", "Usuarios")">Usuarios</a></li>
                                     <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
                                 }
 
                                 <!-- Enlaces para usuarios autenticados -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "User")
                                 {
-                                    <li><a href="@Url.Action("CrearEventos", "Home")">Solicitar evento</a></li>
+                                    @*<li><a href="@Url.Action("CrearEventos", "Home")">Solicitar evento</a></li>*@
                                     <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
                                 }
                                 @if (Session["Rol"] == null)

@@ -29,6 +29,12 @@
                                 </div>
 
                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.Hora)
+                                    @Html.TextBoxFor(model => model.Hora, "{0:HH:mm}", new { @class = "form-control", placeholder = "Hora", type = "time" })
+                                    @Html.ValidationMessageFor(model => model.Hora)
+                                </div>
+
+                                <div class="form-group">
                                     @Html.LabelFor(model => model.Ubicacion)
                                     @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ubicacion" } })
                                     @Html.ValidationMessageFor(model => model.Ubicacion)
@@ -41,21 +47,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Email)
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
-                                    @Html.ValidationMessageFor(model => model.Email)
+                                    @Html.LabelFor(model => model.ClienteID)
+                                    @Html.EditorFor(model => model.ClienteID, new { htmlAttributes = new { @class = "form-control", placeholder = "ClienteID" } })
+                                    @Html.ValidationMessageFor(model => model.ClienteID)
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Cedula)
-                                    @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control", placeholder = "Cédula" } })
-                                    @Html.ValidationMessageFor(model => model.Cedula)
+                                    @Html.LabelFor(model => model.EmpleadoID)
+                                    @Html.EditorFor(model => model.EmpleadoID, new { htmlAttributes = new { @class = "form-control", placeholder = "EmpleadoID" } })
+                                    @Html.ValidationMessageFor(model => model.EmpleadoID)
                                 </div>
 
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Registrar</button>
-                                    <a href="@Url.Action("Index", "Empleados")" class="btn btn-default">Cancelar</a>
+                                    <a href="@Url.Action("Index", "Eventos")" class="btn btn-default">Cancelar</a>
                                 </div>
                             }
                         </div>

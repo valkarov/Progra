@@ -23,50 +23,32 @@
                                 @Html.HiddenFor(model => model.ID)
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Nombre)
-                                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre" })
-                                    @Html.ValidationMessageFor(model => model.Nombre)
+                                    @Html.LabelFor(model => model.Fecha)
+                                    @Html.TextBoxFor(model => model.Fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.Fecha)
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Direccion)
-                                    @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", placeholder = "Dirección" })
-                                    @Html.ValidationMessageFor(model => model.Direccion)
+                                    @Html.LabelFor(model => model.Hora)
+                                    @Html.TextBoxFor(model => model.Hora, "{0:HH:mm}", new { @class = "form-control", placeholder = "Hora", type = "time" })
+                                    @Html.ValidationMessageFor(model => model.Hora)
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Telefono)
-                                    @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
-                                    @Html.ValidationMessageFor(model => model.Telefono)
+                                    @Html.LabelFor(model => model.Ubicacion)
+                                    @Html.TextBoxFor(model => model.Ubicacion, new { @class = "form-control", placeholder = "Ubicacion" })
+                                    @Html.ValidationMessageFor(model => model.Ubicacion)
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Email)
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
-                                    @Html.ValidationMessageFor(model => model.Email)
+                                    @Html.LabelFor(model => model.Tipo)
+                                    @Html.TextBoxFor(model => model.Tipo, new { @class = "form-control", placeholder = "Tipo" })
+                                    @Html.ValidationMessageFor(model => model.Tipo)
                                 </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Cedula)
-                                    @Html.TextBoxFor(model => model.Cedula, new { @class = "form-control", placeholder = "Cédula" })
-                                    @Html.ValidationMessageFor(model => model.Cedula)
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.FechaContratacion)
-                                    @Html.TextBoxFor(model => model.FechaContratacion, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Contratación", type = "date" })
-                                    @Html.ValidationMessageFor(model => model.FechaContratacion)
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.FechaSalida)
-                                    @Html.TextBoxFor(model => model.FechaSalida, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Salida", type = "date" })
-                                    @Html.ValidationMessageFor(model => model.FechaSalida)
-                                </div>
-
+                            
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                    <a href="@Url.Action("Index", "Empleados")" class="btn btn-link">Cancelar</a>
+                                    <a href="@Url.Action("Index", "Eventos")" class="btn btn-link">Cancelar</a>
                                 </div>
                             }
                         </div>
