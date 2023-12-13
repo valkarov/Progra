@@ -1,60 +1,77 @@
-﻿@{
-    ViewBag.Title = "CrearEmpleados";
+﻿@model Progra_Avanzada_Proyecto.Models.EmpleadosViewModel
+
+@{
+    ViewBag.Title = "Crear Empleado";
 }
+
 <main aria-labelledby="title">
-        <!-- Body Inner -->
-        <div class="body-inner">
-
-            <!-- Section -->
-            <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
-                <div class="container container-fullscreen">
-                    <div class="text-middle">
-                        <div class="row">
-                            <div class="col-lg-7 center p-30 background-white b-r-6">
-                                <div class="col-lg-12 m-t-20 text-center">
-                                    <h3>Registrar nuevo empleado</h3>
-                                    <p>Ingresa un empleado nuevo llenando la información de abajo</p>
-                                </div>
-
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Nombre</label>
-                                    <input type="text" value="" placeholder="Nombre" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Dirección</label>
-                                    <input type="text" value="" placeholder="Dirección" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Teléfono</label>
-                                    <input type="text" value="" placeholder="Teléfono" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Email</label>
-                                    <input type="text" value="" placeholder="Email" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Cedula</label>
-                                    <input type="text" value="" placeholder="Cedula" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Fecha de contratación</label>
-                                    <input type="text" value="" placeholder="FechaContratacion" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <label class="sr-only">Fecha de salida</label>
-                                    <input type="text" value="" placeholder="Fecha de salida" class="form-control form-control-lg">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <button class="btn" type="button">Agregar</button>
-                                    <a href="@Url.Action("Index", "Home")" class="btn-link">
-                                </div>
+    <div class="body-inner">
+        <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
+            <div class="container container-fullscreen">
+                <div class="text-middle">
+                    <div class="row">
+                        <div class="col-lg-7 center p-30 background-white b-r-6">
+                            <div class="col-lg-12 m-t-20 text-center">
+                                <h3>Registrar nuevo empleado</h3>
+                                <p>Ingresa la información del nuevo empleado a continuación.</p>
                             </div>
+
+                            @using (Html.BeginForm("Create", "Empleados", FormMethod.Post, new { id = "createEmployeeForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Nombre)
+                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre" } })
+                                    @Html.ValidationMessageFor(model => model.Nombre)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Direccion)
+                                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", placeholder = "Dirección" } })
+                                    @Html.ValidationMessageFor(model => model.Direccion)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Telefono)
+                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", placeholder = "Teléfono" } })
+                                    @Html.ValidationMessageFor(model => model.Telefono)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Cedula)
+                                    @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control", placeholder = "Cédula" } })
+                                    @Html.ValidationMessageFor(model => model.Cedula)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FechaContratacion)
+                                    @Html.TextBoxFor(model => model.FechaContratacion, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Contratación", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.FechaContratacion)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FechaSalida)
+                                    @Html.TextBoxFor(model => model.FechaSalida, "{0:yyyy-MM-dd}", new { @class = "form-control", placeholder = "Fecha de Salida", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.FechaSalida)
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                    <a href="@Url.Action("Index", "Empleados")" class="btn btn-default">Cancelar</a>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- end: Section -->
-        </div>
-        <!-- end: Body Inner -->
-        <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+            </div>
+        </section>
+    </div>
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
 </main>

@@ -148,9 +148,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmpleadosViewModel.cs" />
     <Compile Include="Models\InventarioViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProductosViewModel.cs" />
@@ -4588,7 +4590,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Empleados.cshtml" />
+    <Content Include="Views\Empleados\Index.cshtml" />
     <Content Include="Views\Home\Eventos.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="scss\admin.css.map" />
@@ -4711,11 +4713,13 @@
     <Content Include="Views\Productos\Create.cshtml" />
     <Content Include="Views\Inventario\Edit.cshtml" />
     <Content Include="Views\Inventario\Create.cshtml" />
+    <Content Include="Views\Empleados\Edit.cshtml" />
+    <Content Include="Views\Empleados\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Empleados\" />
+    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

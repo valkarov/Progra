@@ -1,85 +1,89 @@
-﻿@{
+﻿@model List<Progra_Avanzada_Proyecto.Models.EmpleadosViewModel>
+
+@{
     ViewBag.Title = "Empleados";
 }
 <main aria-labelledby="title">
-        <!-- Body Inner -->
-        <div class="body-inner">
-            <!-- Page Content -->
-            <section id="page-content" class="no-sidebar">
-                <div class="container">
-                    <!-- DataTable -->
-                    <div class="row mb-3">
-                        <div class="col-lg-6">
-                            <h4>Administración de empleados</h4>
-                            <a href="@Url.Action("CrearEmpleados", "Home")" class="btn-link">
-                                <button type="button" class="btn btn-light">
-                                    <i class="icon-plus"></i> Añadir empleado
-                                </button>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 text-right">
-                            <div class="p-dropdown ml-3 float-right">
-                                <div class="p-dropdown-content">
-                                    <ul>
-                                </div>
-                            </div>
-                            <div id="export_buttons" class="mt-2"></div>
-                        </div>
+    <!-- Body Inner -->
+    <div class="body-inner">
+        <!-- Page Content -->
+        <section id="page-content" class="no-sidebar">
+            <div class="container">
+                <!-- DataTable -->
+                <div class="row mb-3">
+                    <div class="col-lg-6">
+                        <h4>Administración de empleados</h4>
+                        <a href="@Url.Action("Create", "Empleados")" class="btn-link">
+                            <button type="button" class="btn btn-light">
+                                <i class="icon-plus"></i> Añadir empleado
+                            </button>
+                        </a>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <table id="datatable" class="table table-bordered table-hover" style="width:100%">
-                                <thead>
+                    <div class="col-lg-6 text-right">
+                        <div class="p-dropdown ml-3 float-right">
+                            <div class="p-dropdown-content">
+                                <ul>
+                            </div>
+                        </div>
+                        <div id="export_buttons" class="mt-2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table id="datatable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>
+                                    <th>Cedula</th>
+                                    <th>Fecha de contratación</th>
+                                    <th>Fecha de salida</th>
+                                    <th class="noExport">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var empleado in Model)
+                                {
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Dirección</th>
-                                        <th>Teléfono</th>
-                                        <th>Email</th>
-                                        <th>Cedula</th>
-                                        <th>Fecha de contratación</th>
-                                        <th>Fecha de salida</th>
-                                        <th class="noExport">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Mariana López</td>
-                                        <td>Heredia</td>
-                                        <td>87654321</td>
-                                        <td>mariana.lopez@example.com</td>
-                                        <td>12121212</td>
-                                        <td>2023/11/15</td>
-                                        <td>Null</td>
+                                        <td>@empleado.Nombre</td>
+                                        <td>@empleado.Direccion</td>
+                                        <td>@empleado.Telefono</td>
+                                        <td>@empleado.Email</td>
+                                        <td>@empleado.Cedula</td>
+                                        <td>@(empleado.FechaContratacion.HasValue ? empleado.FechaContratacion.Value.ToString("yyyy/MM/dd") : "N/A")</td>
+                                        <td>@(empleado.FechaSalida.HasValue ? empleado.FechaSalida.Value.ToString("yyyy/MM/dd") : "N/A")</td>
                                         <td>
-                                            <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
-                                            <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
-                                            <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Settings"><i class="icon-settings"></i></a>
+                                            <a class="ml-2" href="@Url.Action("Edit", "Empleados", new { id = empleado.ID })" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
+                                            <a class="ml-2" href="@Url.Action("Delete", "Empleados", new { id = empleado.ID })" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
                                         </td>
                                     </tr>
-                                   
-                            </table>
-                        </div>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- end: DataTable -->
                 </div>
-            </section>
-            <!-- end: Page Content -->
-        </div> <!-- end: Body Inner -->
-        <!-- Scroll top -->
-        <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
-        <!--Popover plugin files-->
-        <script src="plugins/popper/popper.min.js"></script>
+                <!-- end: DataTable -->
+            </div>
+        </section>
+        <!-- end: Page Content -->
+    </div> <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Popover plugin files-->
+    <script src="plugins/popper/popper.min.js"></script>
 
-        <!--Plugins-->
-        <script src="js/jquery.js"></script>
-        <script src="js/plugins.js"></script>
+    <!--Plugins-->
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
 
-        <!--Template functions-->
-        <script src="js/functions.js"></script>
+    <!--Template functions-->
+    <script src="js/functions.js"></script>
 
-        <!--Datatables plugin files-->
-        <script src='plugins/datatables/datatables.min.js'></script>
-        <script>
+    <!--Datatables plugin files-->
+    <script src='plugins/datatables/datatables.min.js'></script>
+    <script>
         $(document).ready(function () {
             var table = $('#datatable').DataTable({
                 buttons: [{
@@ -117,5 +121,5 @@
             table.buttons().container().appendTo('#export_buttons');
             $("#export_buttons .btn").removeClass('btn-secondary').addClass('btn-light');
         });
-        </script>
+    </script>
 </main>
