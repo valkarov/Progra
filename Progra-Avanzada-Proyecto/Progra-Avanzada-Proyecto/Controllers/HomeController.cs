@@ -32,10 +32,5 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             return View();
         }
-
-        public ActionResult Productos()
-        {
-            return View();
-        }
     }
 }

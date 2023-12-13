@@ -1,0 +1,83 @@
+﻿@model Progra_Avanzada_Proyecto.Models.ProductosViewModel
+
+@{
+    ViewBag.Title = "Editar Producto";
+    Layout = null; // Asume que tienes un layout común
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="INSPIRO" />
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="~/image/png" href="images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="~/css/plugins.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="body-inner">
+        <section class="fullscreen" data-bg-parallax="~/images/pages/1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 center p-50 background-white b-r-6">
+                        <h3>Editar Producto</h3>
+                        @using (Html.BeginForm("Edit", "Productos", FormMethod.Post, new { id = "editForm", @class = "form-transparent-grey" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.HiddenFor(m => m.ID)
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Descripcion)
+                                @Html.EditorFor(m => m.Descripcion, new { @class = "form-control", placeholder = "Descripción" })
+                                @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Tipo)
+                                @Html.EditorFor(m => m.Tipo, new { @class = "form-control", placeholder = "Tipo" })
+                                @Html.ValidationMessageFor(m => m.Tipo, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Precio)
+                                @Html.EditorFor(m => m.Precio, new { @class = "form-control", placeholder = "Precio" })
+                                @Html.ValidationMessageFor(m => m.Precio, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Disponibilidad)
+                                @Html.CheckBoxFor(m => m.Disponibilidad)
+                                @Html.ValidationMessageFor(m => m.Disponibilidad, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Productos")'">Cancelar</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Plugins-->
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
+    <!--Template functions-->
+    <script src="js/functions.js"></script>
+</body>
+
+</html>
