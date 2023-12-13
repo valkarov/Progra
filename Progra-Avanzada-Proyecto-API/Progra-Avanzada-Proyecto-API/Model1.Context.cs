@@ -32,5 +32,6 @@ namespace Progra_Avanzada_Proyecto_API
         public virtual DbSet<ProductosServicio> ProductosServicios { get; set; }
         public virtual DbSet<RegistroActividad> RegistroActividads { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<VistaClientesEvento> VistaClientesEventos { get; set; }
     }
 }

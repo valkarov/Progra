@@ -17,10 +17,11 @@ namespace Progra_Avanzada_Proyecto_API.Controllers
         private ProyectoPrograContext db = new ProyectoPrograContext();
 
         // GET: api/Clientes
-        public IQueryable<Cliente> GetClientes()
+        public IQueryable<VistaClientesEvento> GetClientes()
         {
-            return db.Clientes;
+            return db.VistaClientesEventos.AsQueryable(); 
         }
+
 
         // GET: api/Clientes/5
         [ResponseType(typeof(Cliente))]

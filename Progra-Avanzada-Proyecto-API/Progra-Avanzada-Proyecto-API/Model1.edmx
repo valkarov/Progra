@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="ID" />
@@ -79,6 +79,31 @@
           <Property Name="Rol" Type="varchar" MaxLength="50" />
           <Property Name="Permiso" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoProgra.dbo.VistaClientesEventos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VistaClientesEventos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="PreferenciasDieteticas" Type="varchar" MaxLength="500" />
+          <Property Name="TipoEvento" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VistaEventosConNombres">
+          <Property Name="ID" Type="bigint" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Hora" Type="time" Precision="7" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="200" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" />
+          <Property Name="NombreCliente" Type="varchar" MaxLength="100" />
+          <Property Name="NombreEmpleado" Type="varchar" MaxLength="100" />
+        </EntityType>-->
         <Association Name="FK__Eventos__Cliente__3F466844">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
@@ -123,6 +148,17 @@
           <EntitySet Name="ProductosServicios" EntityType="Self.ProductosServicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistroActividad" EntityType="Self.RegistroActividad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VistaClientesEventos" EntityType="Self.VistaClientesEventos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VistaClientesEventos].[ID] AS [ID], 
+    [VistaClientesEventos].[Nombre] AS [Nombre], 
+    [VistaClientesEventos].[Direccion] AS [Direccion], 
+    [VistaClientesEventos].[Telefono] AS [Telefono], 
+    [VistaClientesEventos].[Email] AS [Email], 
+    [VistaClientesEventos].[PreferenciasDieteticas] AS [PreferenciasDieteticas], 
+    [VistaClientesEventos].[TipoEvento] AS [TipoEvento]
+    FROM [dbo].[VistaClientesEventos] AS [VistaClientesEventos]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Eventos__Cliente__3F466844" Association="Self.FK__Eventos__Cliente__3F466844">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Eventos" EntitySet="Eventos" />
@@ -136,8 +172,7 @@
             <End Role="RegistroActividad" EntitySet="RegistroActividad" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoPrograModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -221,6 +256,18 @@
           <Property Name="Permiso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RegistroActividads" Relationship="Self.FK__RegistroA__Usuar__44FF419A" FromRole="Usuarios" ToRole="RegistroActividad" />
         </EntityType>
+        <EntityType Name="VistaClientesEvento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PreferenciasDieteticas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TipoEvento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="FK__Eventos__Cliente__3F466844">
           <End Role="Clientes" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Eventos" Type="Self.Evento" Multiplicity="*" />
@@ -265,6 +312,7 @@
           <EntitySet Name="ProductosServicios" EntityType="Self.ProductosServicio" />
           <EntitySet Name="RegistroActividads" EntityType="Self.RegistroActividad" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="VistaClientesEventos" EntityType="Self.VistaClientesEvento" />
           <AssociationSet Name="FK__Eventos__Cliente__3F466844" Association="Self.FK__Eventos__Cliente__3F466844">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Eventos" EntitySet="Eventos" />
@@ -362,6 +410,19 @@
                 <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="Permiso" ColumnName="Permiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistaClientesEventos">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.VistaClientesEvento">
+              <MappingFragment StoreEntitySet="VistaClientesEventos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PreferenciasDieteticas" ColumnName="PreferenciasDieteticas" />
+                <ScalarProperty Name="TipoEvento" ColumnName="TipoEvento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
