@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="ID" />
@@ -50,6 +50,16 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="200" />
           <Property Name="CantidadDisponible" Type="int" />
         </EntityType>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecoveryCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ExpiryDateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" />
+        </EntityType>
         <EntityType Name="ProductosServicios">
           <Key>
             <PropertyRef Name="ID" />
@@ -94,9 +104,8 @@ warning 6002: The table/view 'ProyectoProgra.dbo.VistaClientesEventos' does not 
           <Property Name="TipoEvento" Type="varchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="VistaEventosConNombres">
-          <Property Name="ID" Type="bigint" />
+warning 6013: The table/view 'ProyectoProgra.dbo.VistaDeLosEventos' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VistaDeLosEventos">
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="Ubicacion" Type="varchar" MaxLength="200" />
@@ -145,6 +154,7 @@ warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does no
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordRecovery" EntityType="Self.PasswordRecovery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosServicios" EntityType="Self.ProductosServicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistroActividad" EntityType="Self.RegistroActividad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -172,7 +182,8 @@ warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does no
             <End Role="RegistroActividad" EntitySet="RegistroActividad" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoPrograModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -224,6 +235,16 @@ warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does no
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CantidadDisponible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecoveryCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpiryDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUsed" Type="Boolean" />
         </EntityType>
         <EntityType Name="ProductosServicio">
           <Key>
@@ -309,6 +330,7 @@ warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does no
           <EntitySet Name="Empleados" EntityType="Self.Empleado" />
           <EntitySet Name="Eventos" EntityType="Self.Evento" />
           <EntitySet Name="Inventarios" EntityType="Self.Inventario" />
+          <EntitySet Name="PasswordRecoveries" EntityType="Self.PasswordRecovery" />
           <EntitySet Name="ProductosServicios" EntityType="Self.ProductosServicio" />
           <EntitySet Name="RegistroActividads" EntityType="Self.RegistroActividad" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
@@ -378,6 +400,17 @@ warning 6013: The table/view 'ProyectoProgra.dbo.VistaEventosConNombres' does no
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="CantidadDisponible" ColumnName="CantidadDisponible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordRecoveries">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.PasswordRecovery">
+              <MappingFragment StoreEntitySet="PasswordRecovery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RecoveryCode" ColumnName="RecoveryCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExpiryDateTime" ColumnName="ExpiryDateTime" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

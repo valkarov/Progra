@@ -49,7 +49,7 @@ namespace Progra_Avanzada_Proyecto_API.Controllers
             // Verificar si el usuario ya existe
             if (db.Usuarios.Any(u => u.NombreUsuario == usuario.NombreUsuario))
             {
-                return Conflict(); // O un mensaje personalizado de que el nombre de usuario ya existe
+                return Conflict(); 
             }
 
             // Hashear la contraseña antes de guardarla
@@ -69,7 +69,6 @@ namespace Progra_Avanzada_Proyecto_API.Controllers
                 var fullErrorMessage = string.Join("; ", errorMessages);
                 var exceptionMessage = string.Concat(e.Message, " Los errores de validación son: ", fullErrorMessage);
 
-                // Considera registrar este mensaje de error para depurar
                 throw new System.Data.Entity.Validation.DbEntityValidationException(exceptionMessage, e.EntityValidationErrors);
             }
 

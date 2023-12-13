@@ -29,6 +29,7 @@ namespace Progra_Avanzada_Proyecto_API
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<Evento> Eventos { get; set; }
         public virtual DbSet<Inventario> Inventarios { get; set; }
+        public virtual DbSet<PasswordRecovery> PasswordRecoveries { get; set; }
         public virtual DbSet<ProductosServicio> ProductosServicios { get; set; }
         public virtual DbSet<RegistroActividad> RegistroActividads { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }

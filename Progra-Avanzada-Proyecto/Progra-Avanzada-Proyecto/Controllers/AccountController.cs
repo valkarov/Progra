@@ -114,6 +114,11 @@ namespace Progra_Avanzada_Proyecto.Controllers
             return RedirectToAction("Index", "Home"); // Redirecciona a la página de inicio
         }
 
+        public ActionResult Recovery()
+        {
+            return View(new LoginViewModel());
+        }
+
 
     }
 
