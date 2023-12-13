@@ -1,0 +1,56 @@
+﻿@model Progra_Avanzada_Proyecto.Models.UsuariosViewModel
+
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+<main aria-labelledby="title">
+    <div class="body-inner">
+        <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
+            <div class="container container-fullscreen">
+                <div class="text-middle">
+                    <div class="row">
+                        <div class="col-lg-7 center p-30 background-white b-r-6">
+                            <div class="col-lg-12 m-t-20 text-center">
+                                <h3>Editar Usuario</h3>
+                                <p>Modifica la información del usuario a continuación.</p>
+                            </div>
+                            @using (Html.BeginForm("Edit", "Usuarios", FormMethod.Post, new { id = "editUserForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.ID)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NombreUsuario)
+                                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre de Usuario" } })
+                                    @Html.ValidationMessageFor(model => model.NombreUsuario)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Contrasenna)
+                                    @Html.PasswordFor(model => model.Contrasenna, new { @class = "form-control", placeholder = "Contraseña" })
+                                    @Html.ValidationMessageFor(model => model.Contrasenna)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Rol)
+                                    @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "form-control", placeholder = "Rol" } })
+                                    @Html.ValidationMessageFor(model => model.Rol)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Permiso)
+                                    @Html.EditorFor(model => model.Permiso, new { htmlAttributes = new { @class = "form-control", placeholder = "Permiso" } })
+                                    @Html.ValidationMessageFor(model => model.Permiso)
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    <a href="@Url.Action("Index", "Usuarios")" class="btn btn-default">Cancelar</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+</main>
