@@ -32,5 +32,23 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
+=======
+
+        public ActionResult Productos()
+        {
+            return View();
+        }
+
+        public ActionResult Usuarios()
+        {
+            return View();
+        }
+
+        public ActionResult CrearEventos()
+        {
+            return View();
+        }
+>>>>>>> 1c89c3fedcd2beb77c82c223e2fdbcc9384e3d0c
     }
 }
