@@ -4703,18 +4703,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Clientes.cshtml" />
     <Content Include="Views\Home\Inventario.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Productos\Edit.cshtml" />
-=======
-    <Content Include="Views\Home\Productos.cshtml" />
-    <Content Include="Views\Home\CrearEventos.cshtml" />
-    <Content Include="Views\Home\Usuarios.cshtml" />
-    <Content Include="Views\Home\CrearEmpleados.cshtml" />
-    <Content Include="Views\Home\CrearClientes.cshtml" />
-    <Content Include="Views\Home\CrearProductos.cshtml" />
-    <Content Include="Views\Home\AgregarInventario.cshtml" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

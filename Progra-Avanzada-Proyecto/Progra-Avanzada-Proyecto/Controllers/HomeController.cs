@@ -42,9 +42,6 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             return View();
         }
-
-<<<<<<< Updated upstream
-=======
         public ActionResult AgregarInventario()
         {
             return View();
@@ -64,6 +61,6 @@ namespace Progra_Avanzada_Proyecto.Controllers
         {
             return View();
         }
->>>>>>> Stashed changes
+
     }
 }
