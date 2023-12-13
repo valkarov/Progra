@@ -23,11 +23,10 @@ namespace Progra_Avanzada_Proyecto.Models
 
         public int EmpleadoID { get; set; }
 
-        // Propiedades de navegación (opcional si estás usando Entity Framework)
-        [ForeignKey("ClienteID")]
-        public virtual ClientesViewModel Cliente { get; set; }
+        //[ForeignKey("ClienteID")]
+        //public virtual ClientesViewModel Cliente { get; set; }
 
-        [ForeignKey("EmpleadoID")]
-        public virtual EmpleadosViewModel Empleado { get; set; }
+        //[ForeignKey("EmpleadoID")]
+        //public virtual EmpleadosViewModel Empleado { get; set; }
     }
 }
