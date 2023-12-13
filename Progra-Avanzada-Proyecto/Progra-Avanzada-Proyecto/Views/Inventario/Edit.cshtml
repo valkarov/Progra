@@ -1,0 +1,46 @@
+﻿@model Progra_Avanzada_Proyecto.Models.InventarioViewModel
+
+@{
+    ViewBag.Title = "Editar Inventario";
+}
+
+<main aria-labelledby="title">
+    <div class="body-inner">
+        <section class="fullscreen" style="background-image: url(~/images/pages/1.jpg)">
+            <div class="container container-fullscreen">
+                <div class="text-middle">
+                    <div class="row">
+                        <div class="col-lg-7 center p-30 background-white b-r-6">
+                            <div class="col-lg-12 m-t-20 text-center">
+                                <h3>Editar Objeto de Inventario</h3>
+                            </div>
+
+                            @using (Html.BeginForm("Edit", "Inventario", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(model => model.ID)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Descripcion)
+                                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", placeholder = "Descripción" } })
+                                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CantidadDisponible)
+                                    @Html.EditorFor(model => model.CantidadDisponible, new { htmlAttributes = new { @class = "form-control", placeholder = "Cantidad disponible" } })
+                                    @Html.ValidationMessageFor(model => model.CantidadDisponible, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn" type="submit">Guardar Cambios</button>
+                                    <a href="@Url.Action("Index", "Inventario")" class="btn btn-link">Cancelar</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+</main>
