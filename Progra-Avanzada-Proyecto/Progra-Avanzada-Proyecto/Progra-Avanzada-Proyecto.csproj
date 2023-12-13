@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
@@ -154,6 +155,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientesViewModel.cs" />
+    <Compile Include="Models\EventosViewModel.cs" />
     <Compile Include="Models\EmpleadosViewModel.cs" />
     <Compile Include="Models\InventarioViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -4593,8 +4595,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Empleados\Index.cshtml" />
-    <Content Include="Views\Home\Eventos.cshtml" />
+    <Content Include="Views\Eventos\Eventos.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="scss\admin.css.map" />
     <Content Include="scss\admin.scss" />
@@ -4716,10 +4717,12 @@
     <Content Include="Views\Productos\Create.cshtml" />
     <Content Include="Views\Inventario\Edit.cshtml" />
     <Content Include="Views\Inventario\Create.cshtml" />
-    <Content Include="Views\Empleados\Edit.cshtml" />
+    <Content Include="Views\Eventos\Create.cshtml" />
+    <Content Include="Views\Home\CrearClientes.cshtml" />
     <Content Include="Views\Empleados\Create.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Empleados\Edit.cshtml" />
+    <Content Include="Views\Empleados\Index.cshtml" />
+    <Content Include="Views\Eventos\Edit.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
   </ItemGroup>
