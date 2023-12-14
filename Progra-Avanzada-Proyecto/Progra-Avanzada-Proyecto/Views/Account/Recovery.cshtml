@@ -21,16 +21,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-3">
-                        <h2 class="text-center">Forgot Password?</h2>
-                        <form class="form-validation">
+                        <h2 class="text-center">¿Olvideste tu contraseña?</h2>
+                        @using (Html.BeginForm("Index", "Account", FormMethod.Post, new { @class = "form-validation" }))
+                        {
                             <div class="form-group">
-                                <p class="center">To receive a new password, enter your email address below.</p>
-                                <input type="email" name="email" class="form-control form-white placeholder" placeholder="Enter your email..." required>
+                                <p class="center">Para recibir tu contraseña por tu correo</p>
+                                @Html.TextBox("email", null, new { @class = "form-control form-white placeholder", placeholder = "Enter your email...", required = "required", type = "email" })
+                                @Html.ValidationMessage("email", "", new { @class = "text-danger" })
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn">Recover your Password</button>
+                                <button type="submit" class="btn">Recuperar Contraseña</button>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>

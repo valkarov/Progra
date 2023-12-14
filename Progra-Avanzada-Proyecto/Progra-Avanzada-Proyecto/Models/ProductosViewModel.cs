@@ -9,6 +9,6 @@ namespace Progra_Avanzada_Proyecto.Models
         public string Tipo { get; set; }
         public decimal Precio { get; set; }
         public bool Disponibilidad { get; set; }
-        // Agrega todas las propiedades que necesitas desde tu API
+        
     }
 }

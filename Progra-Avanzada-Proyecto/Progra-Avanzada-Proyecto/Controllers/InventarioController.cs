@@ -86,8 +86,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
             {
                 return RedirectToAction("Index");
             }
-            // Handle the case where the delete operation failed
-            // This can be a redirect to an error page or just return the index with an error message
+
             return RedirectToAction("Index");
         }
     }

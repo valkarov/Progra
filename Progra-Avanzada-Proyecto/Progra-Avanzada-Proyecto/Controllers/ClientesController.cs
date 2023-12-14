@@ -59,7 +59,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
                 cliente = JsonConvert.DeserializeObject<ClientesViewModel>(jsonString);
-                // Convertir el cliente a ClientesEditViewModel si es necesario
+               
                 var editViewModel = new ClientesEditViewModel
                 {
                     ID = cliente.ID,

@@ -15,7 +15,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
         // Se inicializa HttpClient con la BaseAddress aquí.
         private static readonly HttpClient client = new HttpClient
         {
-            BaseAddress = new Uri("https://localhost:44356/") // Establece la dirección base aquí.
+            BaseAddress = new Uri("https://localhost:44356/") 
         };
 
         [HttpGet]
@@ -72,7 +72,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            return View(); // Buscará la vista en Views/Account/Register.cshtml
+            return View(); 
         }
 
         // Método POST para procesar el formulario de registro
@@ -97,7 +97,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index", "Home"); // O a una página de confirmación
+                    return RedirectToAction("Index", "Home"); 
                 }
                 else
                 {
@@ -122,7 +122,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
 
     }
 
-    // El modelo de respuesta que esperas de tu API
+  
     public class LoginResponse
     {
         public string NombreUsuario { get; set; }

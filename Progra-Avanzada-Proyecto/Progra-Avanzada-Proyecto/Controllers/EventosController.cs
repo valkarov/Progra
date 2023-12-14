@@ -1,23 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Progra_Avanzada_Proyecto.Models; 
 
 namespace Progra_Avanzada_Proyecto.Controllers
 {
     public class EventosController : Controller
     {
-        // GET: Eventos
-        public ActionResult Index()
+        private HttpClient httpClient = new HttpClient();
+
+        public EventosController()
         {
-            return View();
+            
+            httpClient.BaseAddress = new Uri("https://localhost:44356/api/");
+        }
+
+        // GET: Eventos
+        public async Task<ActionResult> Index()
+        {
+            var response = await httpClient.GetAsync("api/Eventos");
+            if (response.IsSuccessStatusCode)
+            {
+                var eventos = await response.Content.ReadAsAsync<IEnumerable<EmpleadosViewModel>>();
+                return View(eventos);
+            }
+            return View("Error");
         }
 
         // GET: Eventos/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var response = await httpClient.GetAsync($"api/Eventos/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var evento = await response.Content.ReadAsAsync<EmpleadosViewModel>();
+                return View(evento);
+            }
+            return HttpNotFound();
         }
 
         // GET: Eventos/Create
@@ -28,62 +50,71 @@ namespace Progra_Avanzada_Proyecto.Controllers
 
         // POST: Eventos/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(EmpleadosViewModel evento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var response = await httpClient.PostAsJsonAsync("api/Eventos", evento);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(evento);
         }
 
         // GET: Eventos/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var response = await httpClient.GetAsync($"api/Eventos/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var evento = await response.Content.ReadAsAsync<EmpleadosViewModel>();
+                return View(evento);
+            }
+            return HttpNotFound();
         }
 
         // POST: Eventos/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, EmpleadosViewModel evento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var response = await httpClient.PutAsJsonAsync($"api/Eventos/{id}", evento);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(evento);
         }
 
         // GET: Eventos/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var response = await httpClient.GetAsync($"api/Eventos/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var evento = await response.Content.ReadAsAsync<EmpleadosViewModel>();
+                return View(evento);
+            }
+            return HttpNotFound();
         }
 
         // POST: Eventos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            try
+            var response = await httpClient.DeleteAsync($"api/Eventos/{id}");
+            if (response.IsSuccessStatusCode)
             {
-                // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return HttpNotFound();
         }
     }
 }

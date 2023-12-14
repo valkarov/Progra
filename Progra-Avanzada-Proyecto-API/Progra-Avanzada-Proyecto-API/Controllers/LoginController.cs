@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using BCrypt.Net; // Asegúrate de tener esta referencia para BCrypt
+using BCrypt.Net; 
 
 namespace Progra_Avanzada_Proyecto_API.Controllers
 {
@@ -26,14 +26,14 @@ namespace Progra_Avanzada_Proyecto_API.Controllers
                 var userInfo = new
                 {
                     NombreUsuario = usuario.NombreUsuario,
-                    Rol = usuario.Rol // Asegúrate de que el modelo Usuario tenga una propiedad Rol
+                    Rol = usuario.Rol 
                 };
 
-                return Ok(userInfo); // Devuelve el objeto con el nombre de usuario y el rol
+                return Ok(userInfo); 
             }
             else
             {
-                return Unauthorized(); // Credenciales incorrectas
+                return Unauthorized(); 
             }
         }
 

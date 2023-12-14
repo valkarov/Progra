@@ -34,7 +34,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
                 productos = new List<ProductosViewModel>();
                 ViewBag.ErrorMessage = "Error al cargar los datos.";
             }
-            return View(productos); // Pasamos la lista de productos a la vista, que puede ser vacía pero no null
+            return View(productos); 
         }
 
         // GET: Productos/Create

@@ -3,13 +3,11 @@
 @{
     ViewBag.Title = "Eventos";
 }
+
 <main aria-labelledby="title">
-    <!-- Body Inner -->
     <div class="body-inner">
-        <!-- Page Content -->
         <section id="page-content" class="no-sidebar">
             <div class="container">
-                <!-- DataTable -->
                 <div class="row mb-3">
                     <div class="col-lg-6">
                         <h4>Administración de eventos</h4>
@@ -19,16 +17,11 @@
                             </button>
                         </a>
                     </div>
-
                     <div class="col-lg-6 text-right">
-                        <div class="p-dropdown ml-3 float-right">
-                            <div class="p-dropdown-content">
-                                <ul>
-                            </div>
-                        </div>
                         <div id="export_buttons" class="mt-2"></div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <table id="datatable" class="table table-bordered table-hover" style="width:100%">
@@ -38,39 +31,33 @@
                                     <th>Hora</th>
                                     <th>Ubicación</th>
                                     <th>Tipo</th>
-                                    <th>ClienteID</th>
-                                    <th>EmpleadoID</th>
-                                    <th class="noExport">Actions</th>
+                                    <th>Cliente</th>
+                                    <th>Empleado</th>
+                                    <th class="noExport">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var evento in Model)
-                                {
-                                    <tr>
-                                        <td>@evento.Fecha.ToString("yyyy/MM/dd")</td>
-                                        <td>@evento.Hora.ToString(@"hh\:mm")</td>
-                                        <td>@evento.Ubicacion</td>
-                                        <td>@evento.Tipo</td>
-                                        <td>@evento.ClienteID</td>
-                                        <td>@evento.EmpleadoID</td>
-                                        <td>
-                                            <a class="ml-2" href="@Url.Action("Edit", "Eventos", new { id = evento.ID })" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
-                                            <a class="ml-2" href="@Url.Action("Delete", "Eventos", new { id = evento.ID })" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
-                                        </td>
-                                    </tr>
-                                }
-
-
-</table>
+        {
+                                <tr>
+                                    <td>@evento.Fecha.ToString("yyyy/MM/dd")</td>
+                                    <td>@evento.Hora.ToString(@"hh\:mm")</td>
+                                    <td>@evento.Ubicacion</td>
+                                    <td>@evento.Tipo</td>
+                                    <td>@evento.Cliente.Nombre</td>
+                                    <td>@evento.Empleado.Nombre</td>
+                                </tr>
+        }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <!-- end: DataTable -->
             </div>
         </section>
-        <!-- end: Page Content -->
-    </div> <!-- end: Body Inner -->
-    <!-- Scroll top -->
+    </div>
     <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+
+
     <!--Popover plugin files-->
     <script src="~/plugins/popper/popper.min.js"></script>
 

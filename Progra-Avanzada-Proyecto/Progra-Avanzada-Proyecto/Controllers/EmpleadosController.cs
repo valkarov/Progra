@@ -86,7 +86,7 @@ namespace Progra_Avanzada_Proyecto.Controllers
             {
                 return RedirectToAction("Index");
             }
-            // Aquí puedes manejar el caso de que la operación de eliminación falle
+           
             return RedirectToAction("Index");
         }
     }

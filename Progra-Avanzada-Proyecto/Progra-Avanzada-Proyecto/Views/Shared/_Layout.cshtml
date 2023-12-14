@@ -57,7 +57,7 @@
                                 <!-- Enlaces para usuarios autenticados -->
                                 @if (Session["Rol"] != null && Session["Rol"].ToString() == "User")
                                 {
-                                    @*<li><a href="@Url.Action("CrearEventos", "Home")">Solicitar evento</a></li>*@
+                                    <li><a href="@Url.Action("Create", "Eventos")">Solicitar evento</a></li>
                                     <li><a href="@Url.Action("Logout", "Account")">Cerrar sesión</a></li>
                                 }
                                 @if (Session["Rol"] == null)
